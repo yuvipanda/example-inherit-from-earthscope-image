@@ -2,11 +2,8 @@ channels:
   - conda-forge
 
 dependencies:
-  - jupyterhub-singleuser>=3.0,<4.0
+  - altair # Example of package to install from conda-forge
 
-  # Everyone wants to use nbgitpuller for everything, so let's do that
-  - nbgitpuller=1.1.*
-  # Install packages from pip
   - pip
   - pip:
-    - otter-grader
+    - aiometer # Example of package to install from PyPI

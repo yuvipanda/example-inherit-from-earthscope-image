@@ -1,5 +1,5 @@
-# Inherit from an upstream image
-FROM jupyter/scipy-notebook:2023-05-01
+# Inherit from an earthscope maintained image
+FROM public.ecr.aws/earthscope-dev/geolab_default:extensions-c1c714c1
 
 COPY environment.yml /tmp/environment.yml
 

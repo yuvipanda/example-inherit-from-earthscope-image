@@ -1,13 +1,18 @@
-# Inherit from a community maintained image
+# Inherit from your own community maintained image
 
-This repo is an example of using [repo2docker-action](https://github.com/jupyterhub/repo2docker-action)
-to build a user image for your JupyterHub inheriting from a community maintained image and adding
-some packages to it. In this case, we inherit from the [jupyter/scipy-notebook](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-scipy-notebook)
-image, and add the packages listed in `environment.yml` to it.
+This repo is an example of inheriting from a base community maintained image to add a few packages
+or make other customizations on top. It can be then used in one of two ways:
+
+1. If Dynamic image building is enabled in your hub, you can simply copy paste the URL of the repo
+   to the 'repo' field, and it will automatically build it for you!
+
+2. An image is built and pushed from here with GitHub actions, using [repo2docker-action](https://github.com/jupyterhub/repo2docker-action).
+   This can be then used via the "Other..." option when selecting image to launch from a hub.
+   See The `./.github/build.yaml` and `./.github/test.yaml` files for more info.
 
 ## Features
 
-1. Inherits from a specific tagged version of the `jupyter/scipy-notebook`, whole image can be upgraded by changing
+1. Inherits from a specific tagged version of an image, whole image can be upgraded by changing
    the `FROM` tag in `Dockerfile`
 2. All modifications happen in `environment.yml` file, which is not container specific. Regular users can use this too.
 3. Users can test out their image **interactively** by making a PR, which will automatically create a comment with a link to
@@ -18,4 +23,5 @@ image, and add the packages listed in `environment.yml` to it.
 5. Tests inside the `image-tests/` directory are also run on each PR, allowing for more fine-grained tests - either as
    `pytest` tests or as jupyter notebooks that must reproduce exactly. This helps catch issues with version upgrades breaking
    your instructional code. The tests are invoked as part of the [`jupyterhub/repo2docker` action](https://github.com/jupyterhub/repo2docker-action). See [here](https://github.com/jupyterhub/repo2docker-action#testing-the-built-image#testing-the-built-image) for more details.
-6. When a PR is merged, the image is built and pushed to [quay.io](https://quay.io/repository/yuvipanda/example-inherit-from-community-image?tab=info)
+6. If you set up `./.github/build.yaml` correctly, on merging a PR, the image is built and pushed to a repository on
+   quay.io. You can use any other docker registry as you wish.
