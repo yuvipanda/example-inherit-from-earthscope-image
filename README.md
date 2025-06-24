@@ -8,7 +8,9 @@ or make other customizations on top. It can be then used in one of two ways:
 
 2. An image is built and pushed from here with GitHub actions, using [repo2docker-action](https://github.com/jupyterhub/repo2docker-action).
    This can be then used via the "Other..." option when selecting image to launch from a hub.
-   See The `./.github/build.yaml` and `./.github/test.yaml` files for more info.
+   See The `./.github/build.yaml` and `./.github/test.yaml` files for more info. Additional documentation
+   is available [on the 2i2c docs site](https://docs.2i2c.org/admin/howto/environment/update-community-image/).
+
 
 ## Features
 
